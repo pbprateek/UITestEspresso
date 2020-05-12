@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.uitestespresso.R
 import com.example.uitestespresso.data.Movie
+import com.example.uitestespresso.util.EspressoIdlingResource
 
 
 import kotlinx.android.synthetic.main.fragment_movie_list.view.*
@@ -57,7 +58,12 @@ class MoviesListAdapter(private val interaction: Interaction? = null) :
     }
 
     fun submitList(list: List<Movie>) {
-        differ.submitList(list)
+        EspressoIdlingResource.increment()
+        //This callback will run after data has been submitted to the list using callback
+        val dataCommitCallback = Runnable {
+            EspressoIdlingResource.decrement()
+        }
+        differ.submitList(list, dataCommitCallback)
     }
 
     class MovieViewHolder
