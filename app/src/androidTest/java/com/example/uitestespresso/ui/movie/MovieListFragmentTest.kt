@@ -21,6 +21,9 @@ import org.junit.Assert.*
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
 
+
+//We are doing this by order bcz there is a espresso bug,so just to put a vary very simple test first
+//And then run the rest,as u can see we have added a prefix "a" in front of a simple test,so that the simple test runs first
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest{
@@ -28,6 +31,8 @@ class MovieListFragmentTest{
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
+
+    //@Rule --You can annotate the property getter however, which is also public and thus satisfies JUnit requirements for a rule getter
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 

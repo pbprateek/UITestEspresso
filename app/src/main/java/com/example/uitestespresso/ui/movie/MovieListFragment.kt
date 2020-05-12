@@ -59,6 +59,8 @@ class MovieListFragment(
 
     private fun getData(){
         //Putting expresso code in production looks like a bad idea but that's what google recommends
+        //How to get rid of this?
+        //Check comment in EspressoIdlingResource file
         EspressoIdlingResource.increment()
         uiCommunicationListener.loading(true)
         val job = GlobalScope.launch(IO) {
